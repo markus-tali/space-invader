@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sheep Invaders</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="wrap">
+            <header>Sheep Invaders</header>
+            <div class="game-wrapper">
+                <div class="main"></div>
+                <div class="win">
+                    <h1>YOU WIN!</h1>
+                    <h2>WINNER WINNER CHICKEN DINNER!</h2>
+                    <button class="btn" onclick="window.location.reload()">
+                        Restart
+                    </button>
+                </div>
+                <div class="lose">
+                    <h1>YOU LOSE!</h1>
+                    <h2>TRY AGAIN!</h2>
+                    <button class="btn" onclick="window.location.reload()">
+                        Restart
+                    </button>
+                </div>
+            </div>
+            <div id="lives"></div>
+            <div id="fps"></div>
+            <div id="score"></div>
+            <script src="main.js"></script>
+            <footer></footer>
+        </div>
+    </body>
+</html>
