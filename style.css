@@ -2,7 +2,9 @@ body{
     height: 100%;
     overflow: hidden;
     color: rgb(100, 160, 60);
-    background-color: rgb(50, 50, 50);
+    font-family: monospace;
+    background: url(img/background-blue.png);
+    animation: scroll-background 10s linear infinite;
 }
 .wrap{
     display: flex;
@@ -18,9 +20,6 @@ body{
 .main{
     width: 800px;
     height: 600px;
-    background: url(img/background-blue.png);
-    animation: scroll-background 5s linear infinite;
-    box-shadow: 0 2px 10px black;
     position: relative;
     z-index: -2;
 }
@@ -29,20 +28,37 @@ body{
         background-position-y:0px;
     }
     to{
-        background-position-y: 256px;
+        background-position-y: 100%;
     }
 }
+
 header{
     text-align: center;
-    background:black;
+    background:linear-gradient(90deg, #0059ff, #e52e71);
     color: white;
-    padding: 5px;
+    padding: 10px;
+    font-size: 34px;
+    font-weight: bold;
+    box-shadow: 0 2px 10px black;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    animation: glow 1.5s infinite alternate;
+}
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+    to {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 1);
+    }
 }
 footer{
     padding: 10px;
     text-align: center;
     font-size: 11px;
-    background: black;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
 }
 .main .laser{
     position: absolute;
@@ -60,33 +76,40 @@ footer{
     position: absolute;
 }
 
-.lose{
+.lose, .pause, .win{
     display: none;
     position: absolute;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     color: black;
     padding:20px 50px;
     box-shadow: 0 2px 10px black;
     border-radius: 10px;
     text-align: center;
 }
-.win{
-    display: none;
-    position: absolute;
-    background: white;
-    color: black;
-    padding:20px 50px;
-    box-shadow: 0 2px 10px black;
-    border-radius: 10px;
+.instructions {
     text-align: center;
 }
-.pause{
-    display: none;
+
+table.ins {
+    margin: 0 auto;
+}
+#stats {
     position: absolute;
-    background: white;
-    color: black;
-    padding:20px 50px;
-    box-shadow: 0 2px 10px black;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    color: white;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 2px 10px black;
+}
+#stats div {
     text-align: center;
+}
+.stats{
+    
 }
