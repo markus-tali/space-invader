@@ -24,15 +24,11 @@ const STATE = {
     times: [],
     fps: null,
     score: 500,
+    scoreInterval: null,
+    timer: 0,
+    timerInterval: null,
 };
 
-function scoreHandler() {
-    if (STATE.gamePaused) {
-        setInterval(function () {
-            STATE.score -= 1;
-        }, 1000);
-    }
-}
 //FPS counter
 function refreshLoop() {
     window.requestAnimationFrame(() => {
@@ -47,6 +43,7 @@ function refreshLoop() {
     });
 }
 refreshLoop();
+
 // Init Game
 const $container = document.querySelector(".main");
 createPlayer($container);
@@ -109,6 +106,7 @@ function updatePlayer() {
         STATE.x_pos += 2;
     }
     if (STATE.shoot && STATE.cooldown == 0) {
+        STATE.score -= 5;
         createLaser(
             $container,
             STATE.x_pos - STATE.spaceship_width / 2,
@@ -153,6 +151,7 @@ function updateLaser($container) {
                 const index = enemies.indexOf(enemy);
                 enemies.splice(index, 1);
                 $container.removeChild(enemy.$enemy);
+                STATE.score += 10;
             }
         }
     }
@@ -247,6 +246,13 @@ function KeyPress(event) {
     } else if (event.key === "Escape") {
         if (event.repeat) return;
         STATE.gamePaused = true;
+
+        //stops counting the score
+        clearInterval(STATE.scoreInterval);
+        STATE.scoreInterval = null;
+        //stops the timer
+        clearInterval(STATE.timerInterval);
+        STATE.timerInterval = null;
     } else if (event.key === "Enter") {
         //prevent auto-repeat
         if (event.repeat) return;
@@ -256,6 +262,19 @@ function KeyPress(event) {
         if (STATE.gameOver || STATE.enemies.length == 0) {
             window.location.reload();
         }
+        //starts counting the score
+        if (STATE.scoreInterval === null) {
+            STATE.scoreInterval = setInterval(function () {
+                STATE.score -= 1;
+            }, 1000);
+        }
+        //starts the timer
+        if (STATE.timerInterval === null) {
+            STATE.timerInterval = setInterval(function () {
+                STATE.timer += 1;
+            }, 1000);
+        }
+        document.querySelector(".pause").style.display = "none";
     } else if (event.key === "r") {
         //prevent auto-repeat
         if (event.repeat) return;
@@ -273,29 +292,55 @@ function KeyRelease(event) {
     }
 }
 
-scoreHandler();
+//helper function to display the timer
+function pad(value) {
+    return value > 9 ? value : "0" + value;
+}
+if (STATE.gamePaused) {
+    document.querySelector(".pause").style.display = "block";
+}
 // Main Update Function
 function update() {
     if (!STATE.gamePaused) {
+        console.log(STATE);
         updatePlayer();
         updateLaser($container);
         updateEnemies($container);
         updateEnemyLaser();
-        //to display the lives
+        //to display the lives, score and timer
         document.getElementById("lives").innerHTML = "Lives: " + STATE.lives;
         document.getElementById("score").innerHTML = "Score: " + STATE.score;
+        document.getElementById("timer").innerHTML =
+            "Time: " +
+            Math.floor(pad(STATE.timer / 60)) +
+            ":" +
+            pad(STATE.timer % 60);
         STATE.animationFrameID = window.requestAnimationFrame(update);
-        if (STATE.lives === 0) {
+        if (STATE.lives === 0 || STATE.score === 0) {
             STATE.gameOver = true;
         }
         if (STATE.gameOver) {
+            clearInterval(STATE.scoreInterval);
+            clearInterval(STATE.timerInterval);
             document.querySelector(".lose").style.display = "block";
             cancelAnimationFrame(STATE.animationFrameID);
         }
         if (STATE.enemies.length == 0) {
+            clearInterval(STATE.scoreInterval);
+            clearInterval(STATE.timerInterval);
             document.querySelector(".win").style.display = "block";
+            document.querySelector(".winscore").innerHTML =
+                "Score: " + STATE.score;
+            document.querySelector(".wintime").innerHTML =
+                "Time: " +
+                Math.floor(pad(STATE.timer / 60)) +
+                ":" +
+                pad(STATE.timer % 60);
             cancelAnimationFrame(STATE.animationFrameID);
         }
+    }
+    if (STATE.gamePaused) {
+        document.querySelector(".pause").style.display = "block";
     }
 }
 

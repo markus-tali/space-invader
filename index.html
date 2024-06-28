@@ -14,9 +14,9 @@
                 <div class="win">
                     <h1>YOU WIN!</h1>
                     <h2>WINNER WINNER CHICKEN DINNER!</h2>
-                    <button class="btn" onclick="window.location.reload()">
-                        Restart
-                    </button>
+                    <span class="winscore"></span> <br />
+                    <span class="wintime"></span> <br />
+                    <span> Press Enter to restart!</span>
                 </div>
                 <div class="lose">
                     <h1>YOU LOSE!</h1>
@@ -25,10 +25,15 @@
                         Restart
                     </button>
                 </div>
+                <div class="pause">
+                    <h1>WELCOME TO MY GAME</h1>
+                    <span></span>
+                </div>
             </div>
             <div id="lives"></div>
             <div id="fps"></div>
             <div id="score"></div>
+            <div id="timer"></div>
             <script src="main.js"></script>
             <footer></footer>
         </div>
