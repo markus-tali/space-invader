@@ -8,18 +8,20 @@
     </head>
     <body>
         <div class="wrap">
-            <header>Sheep Invaders</header>
+            <header>Space Invaders</header>
             <div class="game-wrapper">
                 <div class="main"></div>
                 <div class="win">
                     <h1>YOU WIN!</h1>
                     <h2>WINNER WINNER CHICKEN DINNER!</h2>
-                    <span class="winscore"></span> <br />
-                    <span class="wintime"></span> <br />
+                    <div class="winning">
+                      <span class="winscore"></span> <br>
+                      <span class="wintime"></span> <br><br><br>
+                    </div>
                     <span> Press Enter to restart!</span>
                 </div>
                 <div class="lose">
-                    <h1>YOU LOSE!</h1>
+                    <h1> BOO HOOO :( YOU LOSE!</h1>
                     <h2>TRY AGAIN!</h2>
                     <button class="btn" onclick="window.location.reload()">
                         Restart
@@ -39,8 +41,14 @@
             <th>Function</th>
           </tr>
         </thead>
-
+        
         <tbody>
+          <tr>
+            <td>
+              <b>[Enter]</b> (enter)
+            </td>
+            <td>start/resume</td>
+          </tr>
           <tr>
             <td>
               <b>[&leftarrow;]</b> (Left)
@@ -69,12 +77,6 @@
             <td>pause</td>
           </tr>
 
-          <tr>
-            <td>
-              <b>[Enter]</b> (enter)
-            </td>
-            <td>start/resume</td>
-          </tr>
 
           <tr>
             <td>
@@ -84,17 +86,21 @@
           </tr>
         </tbody>
       </table>
+      <br>
+    
     </div>
   </section>
 
                 </div>
             </div>
-            <div class="stats">
+
+            <div class="stats"> 
                 <div id="lives"></div>
                 <div id="fps"></div>
                 <div id="score"></div>
                 <div id="timer"></div>
             </div>
+
                 <script src="main.js"></script>
                 <footer></footer>
         </div>
