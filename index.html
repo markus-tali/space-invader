@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sheep Invaders</title>
+        <title>Space Invaders</title>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
@@ -15,13 +15,13 @@
                     <h1>YOU WIN!</h1>
                     <h2>WINNER WINNER CHICKEN DINNER!</h2>
                     <div class="winning">
-                      <span class="winscore"></span> <br>
-                      <span class="wintime"></span> <br><br><br>
+                        <span class="winscore"></span> <br />
+                        <span class="wintime"></span> <br /><br /><br />
                     </div>
                     <span> Press Enter to restart!</span>
                 </div>
                 <div class="lose">
-                    <h1> BOO HOOO :( YOU LOSE!</h1>
+                    <h1>BOO HOOO :( YOU LOSE!</h1>
                     <h2>TRY AGAIN!</h2>
                     <button class="btn" onclick="window.location.reload()">
                         Restart
@@ -29,80 +29,65 @@
                 </div>
                 <div class="pause">
                     <h1>WELCOME TO SPACE INVADERS!</h1>
-                   
-  <section class="section">
-    <div class="instructions">
-      <h2>Instructions</h2>
 
-      <table class="ins">
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>Function</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <tr>
-            <td>
-              <b>[Enter]</b> (enter)
-            </td>
-            <td>start/resume</td>
-          </tr>
-          <tr>
-            <td>
-              <b>[&leftarrow;]</b> (Left)
-            </td>
-            <td>move left</td>
-          </tr>
+                    <section class="section">
+                        <div class="instructions">
+                            <h2>Instructions</h2>
 
-          <tr>
-            <td>
-              <b>[&rightarrow;]</b> (Right)
-            </td>
-            <td>move right</td>
-          </tr>
+                            <table class="ins">
+                                <thead>
+                                    <tr>
+                                        <th>Key</th>
+                                        <th>Function</th>
+                                    </tr>
+                                </thead>
 
-          <tr>
-            <td>
-              <b>[_]</b> (Spacebar)
-            </td>
-            <td>fire</td>
-          </tr>
+                                <tbody>
+                                    <tr>
+                                        <td><b>[Enter]</b> (enter)</td>
+                                        <td>start/resume</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>[&leftarrow;]</b> (Left)</td>
+                                        <td>move left</td>
+                                    </tr>
 
-          <tr>
-            <td>
-              <b>[Esc]</b> (escape)
-            </td>
-            <td>pause</td>
-          </tr>
+                                    <tr>
+                                        <td><b>[&rightarrow;]</b> (Right)</td>
+                                        <td>move right</td>
+                                    </tr>
 
+                                    <tr>
+                                        <td><b>[_]</b> (Spacebar)</td>
+                                        <td>fire</td>
+                                    </tr>
 
-          <tr>
-            <td>
-              <b>[R]</b> (R)
-            </td>
-            <td>restart</td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-    
-    </div>
-  </section>
+                                    <tr>
+                                        <td><b>[Esc]</b> (escape)</td>
+                                        <td>pause</td>
+                                    </tr>
 
+                                    <tr>
+                                        <td><b>[R]</b> (R)</td>
+                                        <td>restart</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br />
+                        </div>
+                    </section>
                 </div>
             </div>
 
-            <div class="stats"> 
+            <div class="stats">
                 <div id="lives"></div>
                 <div id="fps"></div>
                 <div id="score"></div>
                 <div id="timer"></div>
             </div>
 
-                <script src="main.js"></script>
-                <footer></footer>
+            <script src="main.js"></script>
+            <footer></footer>
         </div>
     </body>
 </html>
